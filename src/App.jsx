@@ -18,6 +18,7 @@ function App() {
       expense : Number(expenseInput),
     }])
     setCalculateExpense(calculateExpense => calculateExpense + Number(expenseInput));
+    setGroceryInput('');
   }
   
   const addExpense = () => {
@@ -25,6 +26,8 @@ function App() {
   }
   
   const deleteCart = () => {
+    setGroceryInput('');
+    setExpenseInput('');
     setGroceryList([]);
     setExpenseList([]);
     setTotalGrocery([{}])
@@ -33,7 +36,7 @@ function App() {
   }
   
   return (
-    <div className='max-h-screen w-[700px] rounded-xl bg-yellow-100 p-5'>
+    <div className='w-[700px] rounded-xl bg-yellow-100 p-5'>
       <div className='rounded px-3 py-2 flex items-center gap-3'>
         <input
         value={groceryInput}
@@ -51,14 +54,17 @@ function App() {
         className='w-full p-1 rounded bg-transparent text-lg border-b-2 border-b-black text-black focus:outline-none' 
         type="number" />
 
-        <IoIosAddCircle
-        onClick={addGrocery} 
-        size={60} />
+        <div>
+          <IoIosAddCircle
+          className='rounded-full p-1 transition-colors hover:bg-gray-400'
+          onClick={addGrocery} 
+          size={35} />
+        </div>
       </div>
 
         <button
         onClick={addExpense} 
-        className='text-base text-start text-white p-2 my-3 me-3 rounded bg-black mb-1 hover:bg-green-500 hover:text-black transition-all'>Calculate Expense
+        className='text-base text-start text-white p-2 my-3 me-3 rounded bg-black mb-1 hover:bg-green-500 transition-all'>Calculate Expense
         </button>
 
         <button 
